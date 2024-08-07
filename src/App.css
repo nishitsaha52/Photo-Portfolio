@@ -1,0 +1,31 @@
+:root {
+  --primary-color: #1f4037;
+  --secondary-color: #99f2c8;
+  --highlight-color: #ff6347;
+  --background-gradient: linear-gradient(to bottom right, #1f4037, #99f2c8);
+  --text-color: #fff;
+}
+
+body, html {
+  height: 100%;
+  width: 100%;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background: var(--background-gradient);
+  color: var(--text-color);
+  position: relative;
+  font-family: Arial, sans-serif;
+}
+
+#root {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  width: 100%;
+}
+
+/* Importing Font Awesome for icons */
+@import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css');

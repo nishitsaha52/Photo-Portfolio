@@ -1,0 +1,56 @@
+/* Footer Styles */
+.footer {
+    background: rgba(51, 51, 51, 0.8);
+    color: var(--text-color);
+    padding: 1em 0;
+    text-align: center;
+    width: 100%;
+    box-shadow: 0 -2px 4px rgba(0, 0, 0, 0.1);
+    position: relative;
+    z-index: 1; /* Ensure footer is below header but above content */
+}
+
+/* Footer Content Styles */
+.footer-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1em;
+}
+
+/* Footer Paragraph Styles */
+.footer p {
+    margin: 0;
+    font-size: 1em;
+}
+
+/* Social Links Container Styles */
+.social-links {
+    display: flex;
+    gap: 1em;
+}
+
+/* Social Links Styles */
+.social-links a {
+    color: var(--text-color);
+    font-size: 1.5em;
+    transition: color 0.3s ease, transform 0.3s ease;
+}
+
+/* Social Links Hover Effects */
+.social-links a:hover {
+    color: var(--highlight-color);
+    transform: scale(1.1);
+}
+
+/* Responsive Design for Mobile View */
+@media (max-width: 768px) {
+    .footer-content {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .social-links {
+        justify-content: center;
+    }
+}

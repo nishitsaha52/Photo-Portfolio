@@ -1,0 +1,62 @@
+/* Content Container */
+.content {
+    position: relative;
+    z-index: 1;
+    text-align: center;
+    padding: 2em;
+    margin-top: 6em; /* Ensures content starts below the fixed header */
+    flex: 1;
+    background: rgba(255, 255, 255, 0.9); /* Slight background to improve text readability */
+    border-radius: 8px; /* Rounded corners for a softer look */
+}
+
+/* Hero Section */
+.hero {
+    padding: 5em 2em; /* Increased padding for a more spacious look */
+    margin-bottom: 3em; /* Increased margin for better separation */
+    background: var(--primary-color); /* Added background color */
+    color: var(--text-color); /* Text color for better contrast */
+    border-radius: 8px; /* Rounded corners */
+}
+
+.hero h1 {
+    font-size: 4em; /* Larger font size for a bolder headline */
+    margin-bottom: 0.5em;
+    color: var(--highlight-color); /* Highlight color for emphasis */
+}
+
+.hero p {
+    font-size: 1.75em; /* Slightly larger font size for better readability */
+    margin-bottom: 1.5em;
+    color: var(--text-color); /* Consistent text color */
+}
+
+/* CTA Button */
+.cta-button {
+    background: var(--highlight-color); /* Consistent with highlight color */
+    color: #fff;
+    border: none;
+    padding: 1em 2.5em; /* Slightly larger padding for better touch target */
+    font-size: 1.3em; /* Larger font size for emphasis */
+    border-radius: 4px; /* Rounded corners for the button */
+    cursor: pointer;
+    transition: background 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease; /* Added box-shadow transition */
+}
+
+.cta-button:hover {
+    background: #ff4500; /* Darker shade for hover effect */
+    transform: scale(1.05);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Added shadow effect on hover */
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .hero {
+        padding: 3em 1em; /* Adjusted padding for smaller screens */
+    }
+
+    .cta-button {
+        font-size: 1.1em; /* Slightly smaller font size for mobile */
+        padding: 0.8em 1.8em; /* Adjusted padding for mobile */
+    }
+}
