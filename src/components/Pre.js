@@ -7,33 +7,21 @@ const Preloader = () => {
     left: 0,
     width: '100%',
     height: '100%',
-    backgroundColor: 'rgba(255, 255, 255, 0.8)',
+    backgroundColor: 'linear-gradient(135deg, #219C90 30%, #D83F31 90%)',
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
     zIndex: 9999,
   };
 
-  const spinnerStyle = {
-    border: '8px solid rgba(0, 0, 0, 0.1)',
-    borderRadius: '50%',
-    borderTop: '8px solid #3498db',
-    width: '50px',
-    height: '50px',
-    animation: 'spin 1s linear infinite',
+  const gifStyle = {
+    width: '150px', // Adjust the size of the GIF if needed
+    height: '150px',
   };
 
   return (
     <div style={preloaderStyle}>
-      <div style={spinnerStyle}></div>
-      <style>
-        {`
-          @keyframes spin {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
-          }
-        `}
-      </style>
+      <img src="/images/pre.gif" alt="Loading..." style={gifStyle} />
     </div>
   );
 };

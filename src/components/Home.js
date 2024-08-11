@@ -158,9 +158,10 @@ const Home = () => {
 
     return (
         <div className="home-page">
-            <marquee className="home-marquee" behavior="scroll" direction="left">
-                {randomQuote}
-            </marquee>
+            <div className="home-marquee-container">
+                <div className="home-marquee">
+                    {randomQuote}
+                </div>
             <div className="hero">
                 <h1>Welcome to My Portfolio</h1>
                 <p>Discover my latest work and exhibitions.</p>
@@ -233,6 +234,7 @@ const Home = () => {
                     Explore More Resources
                 </button>
             </div>
+        </div>
         </div>
     );
 };

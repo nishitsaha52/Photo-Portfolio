@@ -454,7 +454,13 @@
   border-radius: 3px;
 }
 
-/* Marquee Text */
+.home-marquee-container {
+  width: 100%;
+  overflow: hidden;
+  white-space: nowrap;
+  box-sizing: border-box;
+}
+
 .home-marquee {
   width: 97%;
   font-size: 3em;
@@ -464,7 +470,16 @@
   white-space: nowrap;
   text-shadow: 0 0 10px rgba(255, 255, 255, 0.8); 
   display: inline-block;
-  animation: color-change 5s linear infinite;
+  animation: scroll 10s linear infinite, color-change 5s linear infinite;
+}
+
+@keyframes scroll {
+  from {
+      transform: translateX(100%);
+  }
+  to {
+      transform: translateX(-100%);
+  }
 }
 
 @keyframes color-change {
