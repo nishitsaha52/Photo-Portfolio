@@ -1,0 +1,140 @@
+/* About Section */
+.about-container {
+  padding: 60px 30px;
+  max-width: 1200px;
+  margin: 0 auto;
+  background: rgba(255, 255, 255, 0.95);
+  border-radius: 25px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+  text-align: center;
+  transition: all 0.3s ease-in-out;
+}
+
+.about-container:hover {
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
+}
+
+.about-header {
+  margin-bottom: 50px;
+}
+
+.about-header h1 {
+  font-size: 4em;
+  color: #173B45;
+  font-family: 'Roboto', sans-serif;
+  letter-spacing: 1px;
+  margin-bottom: 10px;
+}
+
+.header-underline {
+  width: 140px;
+  height: 6px;
+  background-color: #E9B824;
+  margin: 15px auto 0 auto;
+  border-radius: 3px;
+}
+
+.about-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  animation: fadeIn 2s ease-in-out;
+}
+
+.about-image {
+  margin-bottom: 40px;
+}
+
+.about-image img {
+  border-radius: 50%;
+  width: 250px;
+  height: 250px;
+  object-fit: cover;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  border: 8px solid #E9B824;
+}
+
+.about-image img:hover {
+  transform: scale(1.1);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+  border: 8px solid #6C0345;
+}
+
+.about-text {
+  max-width: 1000px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.about-text h2 {
+  font-size: 3.5em;
+  color: #E9B824;
+  margin-bottom: 25px;
+  font-family: 'Roboto', sans-serif;
+}
+
+.about-text ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+.about-text ul li {
+  color: #393E46;
+  line-height: 1.8;
+  margin-bottom: 30px;
+  font-size: 1.25em;
+  position: relative;
+  padding-left: 30px;
+  transition: color 0.3s ease;
+}
+
+.about-text ul li:hover {
+  color: #E9B824;
+}
+
+.about-text ul li:before {
+  content: '•';
+  color: #E9B824;
+  font-size: 2em;
+  position: absolute;
+  left: 0;
+  top: 0;
+}
+
+.about-text ul li strong{
+  color: #6C0345;
+  font-weight: bold;
+}
+
+.contact-button {
+  padding: 15px 35px;
+  background-color: #E9B824;
+  color: white;
+  border: none;
+  border-radius: 50px;
+  cursor: pointer;
+  font-size: 22px;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.contact-button:hover {
+  background: #6C0345;
+  color: wheat;
+  transform: scale(1.05);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

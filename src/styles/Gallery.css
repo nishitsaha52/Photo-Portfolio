@@ -1,0 +1,180 @@
+@import url('https://fonts.googleapis.com/css2?family=Bungee+Spice&family=Caveat:wght@400..700&family=Dancing+Script:wght@400..700&family=Merienda:wght@300..900&family=Playwrite+IS:wght@100..400&display=swap');
+
+/* Featured Work Slider */
+.slider-container {
+    width: 100%;
+    height: auto; /* Changed to auto for responsive height */
+    max-width: 100%;
+    margin: 0 auto;
+    padding: 0 10px; /* Added padding for better spacing */
+}
+
+.slider-item {
+    position: relative;
+    overflow: hidden;
+    border-radius: 12px;
+    transition: var(--transition);
+    width: 300px;
+    height: 200px;
+    margin: 0 auto; /* Center align slider items */
+}
+
+.slider-image {
+    width: 100%;
+    height: 100%; /* Changed to 100% to fit slider-item dimensions */
+    object-fit: cover;
+    padding: 10px;
+    border-radius: 12px;
+    box-shadow: var(--shadow);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.featured-work .slider-image:hover {
+    transform: scale(1.05);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Card styles */
+.card {
+    background: var(--highlight-color);
+    margin: 2em auto;
+    padding: 2em;
+    border-radius: 12px;
+    box-shadow: var(--shadow);
+    max-width: 100%;
+    text-align: left;
+    transition: var(--transition);
+    cursor: pointer;
+    height: 300px; /* Fixed height for uniformity */
+    display: flex;
+    flex-direction: column; /* Ensures content is properly aligned */
+    justify-content: space-between; /* Spreads out content evenly */
+}
+
+.card img {
+    width: 100%;
+    height: 200px;
+    border-radius: 12px;
+    object-fit: cover;
+}
+
+.card-content {
+    padding: 1em 0;
+    color: var(--text-color);
+}
+
+/* Responsive Design for Cards and Slider */
+@media (max-width: 768px) {
+    .card {
+        padding: 1.5em;
+        margin: 1.5em auto;
+    }
+
+    .featured-work .slider-container {
+        padding: 0 10px;
+    }
+}
+
+@media (max-width: 480px) {
+    .card {
+        padding: 1em;
+        height: auto; /* Adjust height for smaller screens */
+    }
+
+    .featured-work .slider-image {
+        height: auto; /* Adjust height for smaller screens */
+    }
+}
+
+/* Gallery Component */
+.gallery-container {
+    width: 100%;
+    max-width: 1200px;
+    margin: auto;
+    padding: 20px;
+    background: #ffffff;
+    border-radius: 12px;
+    box-shadow: var(--shadow);
+    text-align: center;
+    transition: var(--transition);
+}
+
+.category-buttons {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+    flex-wrap: wrap;
+}
+
+.category-button {
+    padding: 0.8em 1.5em;
+    margin: 0.5em;
+    border: none;
+    background-color: var(--highlight-color);
+    color: #ffffff;
+    cursor: pointer;
+    transition: var(--transition);
+    font-size: 1.2em;
+    border-radius: 8px;
+}
+
+.category-button.active,
+.category-button:hover {
+    background: #6C0345;
+    color: wheat;
+    transform: scale(1.05);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Ensure the slider container has the proper styling */
+.gallery-slider .slick-slide {
+    padding: 10px;
+    height: auto; /* Adjust height for better responsiveness */
+}
+
+.gallery-item {
+    position: relative;
+    overflow: hidden;
+    border-radius: 12px;
+    transition: var(--transition);
+    width: 300px;
+    height: 200px;
+    margin: 0 auto; /* Center align gallery items */
+}
+
+.gallery-item:hover {
+    transform: scale(1.05);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.gallery-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 8px;
+}
+
+/* Adding transitions for image zoom */
+.gallery-item.zoom-out img {
+    transform: scale(1.1);
+}
+
+/* Quote container styling */
+.quote {
+    margin-top: 20px;
+    font-size: 2em;
+    color: whitesmoke;
+    padding: 10px;
+    background: var(--highlight-color);
+    border-radius: 8px;
+    box-shadow: var(--shadow);
+    max-width: 1100px;
+    margin: 20px auto;
+    transition: var(--transition);
+}
+
+.quote:hover {
+    transform: scale(1.05);
+    background: #6C0345;
+    color: wheat;
+}
