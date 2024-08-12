@@ -1,11 +1,9 @@
-import React, { useEffect, useState, useRef } from 'react';
+import React, { useEffect, useState, useRef, useCallback } from 'react';
 import _ from 'lodash';
 
 const CustomCursor = () => {
   const [cursorX, setCursorX] = useState(0);
   const [cursorY, setCursorY] = useState(0);
-  const [isClicking, setIsClicking] = useState(false);
-  const [buttonHovered, setButtonHovered] = useState(false);
   const cursorRef = useRef(null);
 
   // Check if it is a touch device
@@ -26,7 +24,8 @@ const CustomCursor = () => {
     }
   }, 10);
 
-  const move = (e) => {
+  // Memoize the move function
+  const move = useCallback((e) => {
     const touchEvent = e.touches ? e.touches[0] : null;
     const x = !isTouchDevice() ? e.clientX : touchEvent?.clientX || 0;
     const y = !isTouchDevice() ? e.clientY : touchEvent?.clientY || 0;
@@ -35,42 +34,17 @@ const CustomCursor = () => {
     setCursorY(y);
 
     debouncedMove(x, y);
-  };
-
-  const handleMouseDown = () => setIsClicking(true);
-  const handleMouseUp = () => setIsClicking(false);
-
-  const handleMouseEnter = (e) => {
-    const target = e.target;
-    if (target instanceof Element && (target.classList.contains('card') || target.classList.contains('button'))) {
-      setButtonHovered(true);
-    }
-  };
-
-  const handleMouseLeave = (e) => {
-    const target = e.target;
-    if (target instanceof Element && (target.classList.contains('card') || target.classList.contains('button'))) {
-      setButtonHovered(false);
-    }
-  };
+  }, [debouncedMove]);
 
   useEffect(() => {
     document.addEventListener('mousemove', move);
     document.addEventListener('touchmove', move);
-    document.addEventListener('mousedown', handleMouseDown);
-    document.addEventListener('mouseup', handleMouseUp);
-    document.addEventListener('mouseover', handleMouseEnter, true);
-    document.addEventListener('mouseout', handleMouseLeave, true);
 
     return () => {
       document.removeEventListener('mousemove', move);
       document.removeEventListener('touchmove', move);
-      document.removeEventListener('mousedown', handleMouseDown);
-      document.removeEventListener('mouseup', handleMouseUp);
-      document.removeEventListener('mouseover', handleMouseEnter, true);
-      document.removeEventListener('mouseout', handleMouseLeave, true);
     };
-  }, []);
+  }, [move]);
 
   return (
     <div>
