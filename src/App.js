@@ -1,15 +1,17 @@
+// src/App.js
 import React, { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import Header from './components/Header';
 import Footer from './components/Footer';
-import Gallery from './components/Gallery';
-import About from './components/About';
-import Contact from './components/Contact';
-import Home from './components/Home';
-import Services from './components/Services';
-import Resource from './components/Resource';
-import GearList from './components/GearList';
-import Preloader from './components/Pre'; // Import the Preloader component
+import Gallery from './pages/Gallery';
+import About from './pages/About';
+import Contact from './pages/Contact';
+import Home from './pages/Home';
+import Services from './pages/Services';
+import Resource from './pages/Resource';
+import GearList from './pages/GearList';
+import Preloader from './components/Pre';
+import CustomCursor from './components/CustomCursor';
 import 'leaflet/dist/leaflet.css';
 import './App.css';
 
@@ -17,12 +19,11 @@ const App = () => {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    // Simulate a delay to show the preloader (e.g., fetching data or initial loading)
     const timer = setTimeout(() => {
-      setLoading(false); // Hide preloader after loading is complete
-    }, 2000); // Adjust the time as needed
+      setLoading(false);
+    }, 2000);
 
-    return () => clearTimeout(timer); // Cleanup the timer on component unmount
+    return () => clearTimeout(timer);
   }, []);
 
   return (
@@ -45,6 +46,7 @@ const App = () => {
           </div>
           <br/>
           <Footer />
+          <CustomCursor /> {/* Add the CustomCursor component here */}
         </>
       )}
     </Router>

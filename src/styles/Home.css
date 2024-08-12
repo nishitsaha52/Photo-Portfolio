@@ -15,8 +15,9 @@
 
 /* Hero Section */
 .hero {
+  max-width: 90%; /* Reduced width for the hero container */
   padding: 4em 2em;
-  margin-bottom: 3em;
+  margin: 0 auto 3em; /* Center align the hero container */
   background: var(--highlight-color);
   color: #ffffff;
   border-radius: 8px;
@@ -264,35 +265,65 @@
   cursor: pointer;
 }
 
+/* Slider Container */
 .home-slider-container {
   width: 100%;
-  height: 30vh;
+  height: auto; /* Adjust height as needed */
   max-width: 100%;
   margin: 0 auto;
+  position: relative; /* Ensure proper positioning of slides */
 }
 
+/* Slider Item */
 .home-slider-item {
-  position: relative;
-  overflow: hidden;
   border-radius: 12px;
-  transition: var(--transition);
+  padding: 0.5em; /* Add padding for spacing between images */
+  box-sizing: border-box;
 }
 
+/* Slider Image */
 .home-slider-image {
   width: 100%;
   height: 60vh;
   object-fit: cover;
-  padding: 10px;
-  border-radius: 8px;
+  border-radius: 12px; /* Enhanced border radius for better design */
   box-shadow: var(--shadow);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
-  object-fit: cover;
+  margin: 0 auto; /* Center the image */
 }
 
-.home-featured-work .home-slider-image:hover {
+/* Hover Effect for Slider Image */
+.home-slider-image:hover {
   transform: scale(1.05);
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
 }
+
+/* Enhance Slider Navigation (Optional) */
+.slick-prev, .slick-next {
+  border-radius: 50%;
+  background-color: #fff;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.slick-prev:hover, .slick-next:hover {
+  background-color: var(--highlight-color);
+  color: #fff;
+}
+
+/* Responsive Design for Slider */
+@media (max-width: 768px) {
+  .home-slider-image {
+    height: 50vh; /* Adjust height for smaller screens */
+  }
+}
+
+@media (max-width: 480px) {
+  .home-slider-image {
+    height: 40vh; /* Further adjust height for very small screens */
+  }
+}
+
 
 /* Resource Recommendations Section */
 .home-card.resource-recommendations {
@@ -488,4 +519,125 @@
   50% { color: #F15D22; }    /* Bright Orange */
   75% { color: #FF8C00; }    /* Dark Orange */
   100% { color: #FF6F61; }   /* Coral Red */
+}
+
+/* Adjust Content Container */
+@media (max-width: 1024px) {
+  .home {
+    padding: 1.5em;
+    margin-top: 4em;
+  }
+
+  .hero {
+    padding: 3em 1.5em;
+  }
+
+  .cta-button {
+    padding: 0.8em 2em;
+    font-size: 1.2em;
+  }
+
+  .home-card.testimonials,
+  .featured-work,
+  .home-card.resource-recommendations,
+  .home-card.gear-list {
+    padding: 1.5em;
+    margin: 1.5em auto;
+  }
+
+  .home-testimonial-container {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .home-slider-image {
+    height: 50vh;
+  }
+}
+
+@media (max-width: 768px) {
+  .home {
+    padding: 1em;
+    margin-top: 2em;
+  }
+
+  .hero {
+    padding: 2em 1em;
+  }
+
+  .cta-button {
+    padding: 0.6em 1.5em;
+    font-size: 1em;
+  }
+
+  .home-card.testimonials,
+  .featured-work,
+  .home-card.resource-recommendations,
+  .home-card.gear-list {
+    padding: 1em;
+    margin: 1em auto;
+  }
+
+  .home-testimonial-container {
+    grid-template-columns: repeat(1, 1fr);
+  }
+
+  .home-slider-image {
+    height: 40vh;
+  }
+
+  .home-marquee {
+    font-size: 2em;
+  }
+
+  .home-resource-item,
+  .home-gear-item {
+    padding: 0.8em;
+  }
+
+  .home-contact-button {
+    padding: 12px 24px;
+    font-size: 16px;
+  }
+}
+
+@media (max-width: 480px) {
+  .home {
+    padding: 0.8em;
+    margin-top: 1em;
+  }
+
+  .hero {
+    padding: 1.5em 0.5em;
+  }
+
+  .cta-button {
+    padding: 0.5em 1em;
+    font-size: 0.9em;
+  }
+
+  .home-card.testimonials,
+  .featured-work,
+  .home-card.resource-recommendations,
+  .home-card.gear-list {
+    padding: 0.8em;
+    margin: 0.8em auto;
+  }
+
+  .home-slider-image {
+    height: 30vh;
+  }
+
+  .home-marquee {
+    font-size: 1.5em;
+  }
+
+  .home-resource-item,
+  .home-gear-item {
+    padding: 0.6em;
+  }
+
+  .home-contact-button {
+    padding: 10px 20px;
+    font-size: 14px;
+  }
 }

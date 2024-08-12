@@ -15,11 +15,8 @@ const quotes = [
     "“The camera is an instrument that teaches people how to see without a camera.” – Dorothea Lange"
 ];
 
-// Function to get a random quote
-const getRandomQuote = () => {
-    const randomIndex = Math.floor(Math.random() * quotes.length);
-    return quotes[randomIndex];
-};
+// Generate a random quote
+const randomQuote = quotes[Math.floor(Math.random() * quotes.length)];
 
 const sliderSettings = {
     dots: true,
@@ -29,6 +26,10 @@ const sliderSettings = {
     slidesToScroll: 1,
     centerMode: true,
     centerPadding: '15px',
+    autoplay: true,
+    autoplaySpeed: 3000,
+    pauseOnHover: false,  // Ensure autoplay doesn't pause on hover
+    pauseOnFocus: false,  // Ensure autoplay doesn't pause on focus
     responsive: [
         {
             breakpoint: 1024,
@@ -48,6 +49,7 @@ const sliderSettings = {
         },
     ],
 };
+
 
 const testimonials = [
     { text: "An amazing photographer with a keen eye for detail. The photoshoot was fantastic, and the results were beyond my expectations!", name: "Jane Doe", rating: 4 },
@@ -99,15 +101,13 @@ const Testimonial = ({ text, name, rating }) => (
             <blockquote className="home-testimonial-quote">"{text}"</blockquote>
             <h4 className="home-testimonial-author">- {name}</h4>
             <div className="home-testimonial-rating" aria-label={`Rating: ${rating} out of 5`}>
-                {[...Array(5)].map((_, i) => {
-                    if (i < Math.floor(rating)) {
-                        return <span key={i} className="circle filled" aria-hidden="true"></span>;
-                    } else if (i === Math.floor(rating) && rating % 1 !== 0) {
-                        return <span key={i} className="circle half" aria-hidden="true"></span>;
-                    } else {
-                        return <span key={i} className="circle" aria-hidden="true"></span>;
-                    }
-                })}
+                {[...Array(5)].map((_, i) => (
+                    <span
+                        key={i}
+                        className={`circle ${i < Math.floor(rating) ? "filled" : i === Math.floor(rating) && rating % 1 !== 0 ? "half" : ""}`}
+                        aria-hidden="true"
+                    ></span>
+                ))}
             </div>
         </div>
         <div className="home-testimonial-avatar">
@@ -141,20 +141,9 @@ const ResourceItem = ({ title, author, link }) => (
 const Home = () => {
     const navigate = useNavigate();
 
-    const handleExploreGalleryClick = () => {
-        navigate('/gallery');
+    const handleNavigate = (path) => {
+        navigate(path);
     };
-
-    const handleResourceRecommendationsClick = () => {
-        navigate('/resource');
-    };
-
-    const handleGearRecommendationsClick = () => {
-        navigate('/gearlist');
-    };
-
-    // Get a random quote for the marquee
-    const randomQuote = getRandomQuote();
 
     return (
         <div className="home-page">
@@ -162,10 +151,11 @@ const Home = () => {
                 <div className="home-marquee">
                     {randomQuote}
                 </div>
+            </div>
             <div className="hero">
                 <h1>Welcome to My Portfolio</h1>
                 <p>Discover my latest work and exhibitions.</p>
-                <button className="cta-button" onClick={handleExploreGalleryClick} aria-label="Explore the gallery">
+                <button className="cta-button" onClick={() => handleNavigate('/gallery')} aria-label="Explore the gallery">
                     Explore Gallery
                 </button>
             </div>
@@ -174,15 +164,11 @@ const Home = () => {
                 <h2>Featured Work</h2>
                 <div className="home-slider-container">
                     <Slider {...sliderSettings} className="home-feature-slider">
-                        <div className="home-slider-item">
-                            <img src="/images/pro1.jpg" alt="Photography work 1" className="home-slider-image" />
-                        </div>
-                        <div className="home-slider-item">
-                            <img src="/images/pro2.jpg" alt="Photography work 2" className="home-slider-image" />
-                        </div>
-                        <div className="home-slider-item">
-                            <img src="/images/pro3.jpg" alt="Photography work 3" className="home-slider-image" />
-                        </div>
+                        {['pro1.jpg', 'pro2.jpg', 'pro3.jpg'].map((image, index) => (
+                            <div key={index} className="home-slider-item">
+                                <img src={`/images/${image}`} alt={`Photography work ${index + 1}`} className="home-slider-image" />
+                            </div>
+                        ))}
                     </Slider>
                 </div>
             </div>
@@ -194,9 +180,7 @@ const Home = () => {
                     {testimonials.map((testimonial, index) => (
                         <Testimonial
                             key={index}
-                            text={testimonial.text}
-                            name={testimonial.name}
-                            rating={testimonial.rating}
+                            {...testimonial}
                         />
                     ))}
                 </div>
@@ -208,12 +192,11 @@ const Home = () => {
                     {gearList.map((gear, index) => (
                         <GearItem
                             key={index}
-                            item={gear.item}
-                            details={gear.details}
+                            {...gear}
                         />
                     ))}
                 </ul>
-                <button className="home-contact-button" onClick={handleGearRecommendationsClick} aria-label="View all gear">
+                <button className="home-contact-button" onClick={() => handleNavigate('/gearlist')} aria-label="View all gear">
                     View Full Gear List
                 </button>
             </div>
@@ -224,17 +207,14 @@ const Home = () => {
                     {resources.map((resource, index) => (
                         <ResourceItem
                             key={index}
-                            title={resource.title}
-                            author={resource.author}
-                            link={resource.link}
+                            {...resource}
                         />
                     ))}
                 </ul>
-                <button className="home-contact-button" onClick={handleResourceRecommendationsClick} aria-label="Explore more resources">
-                    Explore More Resources
+                <button className="home-contact-button" onClick={() => handleNavigate('/resources')} aria-label="View all resources">
+                    View All Resources
                 </button>
             </div>
-        </div>
         </div>
     );
 };

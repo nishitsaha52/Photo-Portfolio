@@ -1,4 +1,4 @@
-/* Header Styles */
+/* Header styles */
 .header {
   display: flex;
   align-items: center;
@@ -73,7 +73,7 @@
 
 /* Icon Button Style */
 .dropdown .dropdown-toggle {
-  color: #E9B824; /* Highlight color for the icon */
+  color: #E9B824;
 }
 
 /* Responsive Design */
@@ -101,6 +101,11 @@
     width: 100%;
     padding: 1em;
     font-size: 1.3em;
+    text-align: center;
+  }
+
+  .dropdown .dropdown-toggle {
+    font-size: 1.3em;
   }
 }
 
@@ -108,5 +113,9 @@
   .nav a {
     font-size: 1.2em;
     padding: 0.75em;
+  }
+
+  .dropdown .dropdown-toggle {
+    font-size: 1.2em;
   }
 }

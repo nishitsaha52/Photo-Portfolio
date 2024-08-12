@@ -29,6 +29,7 @@
 .social-links {
     display: flex;
     gap: 1.5em; /* Increased gap for better spacing */
+    justify-content: center; /* Center social links */
 }
 
 /* Social Icons Styling */
@@ -53,7 +54,7 @@
     }
 
     .social-links {
-        justify-content: center;
+        gap: 1em; /* Adjusted gap for better spacing on smaller screens */
     }
 }
 

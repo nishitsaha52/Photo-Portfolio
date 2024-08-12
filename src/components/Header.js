@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { IconButton, Menu, MenuItem } from '@mui/material';
 import { MoreVert as MoreVertIcon } from '@mui/icons-material';
-import { FaHome, FaCamera, FaServicestack, FaBook, FaInfoCircle, FaPhone } from 'react-icons/fa'; // Importing icons from react-icons
+import { FaHome, FaCamera, FaServicestack, FaBook, FaInfoCircle, FaPhone } from 'react-icons/fa';
 import '../styles/Header.css';
 
 const Header = () => {
@@ -57,23 +57,24 @@ const Header = () => {
             onClose={handleMenuClose}
             sx={{
               '& .MuiPaper-root': {
-                backgroundColor: 'rgba(0, 0, 0, 0.7)', // Transparent black background
+                backgroundColor: 'rgba(0, 0, 0, 0.7)',
                 borderRadius: '8px',
                 boxShadow: '0 4px 8px rgba(0, 0, 0, 0.2)',
                 marginTop: '8px',
               },
               '& .MuiMenuItem-root': {
-                color: '#E9B824', // Bright yellow text color
+                color: '#E9B824',
                 padding: '1em',
                 fontSize: '1.2em',
                 borderRadius: '6px',
-                display: 'flex', // To align icon and text
+                display: 'flex',
                 alignItems: 'center',
-                gap: '0.5em', // Gap between icon and text
+                gap: '0.5em',
                 transition: 'background-color 0.3s ease, color 0.3s ease',
                 '&:hover': {
-                  backgroundColor: 'rgba(255, 255, 255, 0.1)', // Light transparent white on hover
-                  color: '#F5DEB3', // White text color on hover
+                  backgroundColor: 'rgba(255, 255, 255, 0.1)',
+                  color: '#F5DEB3',
+                  cursor: 'auto',
                 },
               },
             }}
