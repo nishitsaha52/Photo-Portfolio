@@ -211,7 +211,7 @@ const Home = () => {
                         />
                     ))}
                 </ul>
-                <button className="home-contact-button" onClick={() => handleNavigate('/resources')} aria-label="View all resources">
+                <button className="home-contact-button" onClick={() => handleNavigate('/resource')} aria-label="View all resources">
                     View All Resources
                 </button>
             </div>

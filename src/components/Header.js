@@ -2,12 +2,20 @@ import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { IconButton, Menu, MenuItem } from '@mui/material';
 import { MoreVert as MoreVertIcon } from '@mui/icons-material';
-import { FaHome, FaCamera, FaServicestack, FaBook, FaInfoCircle, FaPhone } from 'react-icons/fa';
+import { FaHome, FaCamera, FaServicestack, FaBook, FaInfoCircle, FaPhone, FaBars } from 'react-icons/fa';
 import '../styles/Header.css';
+
+const menuItems = [
+  { label: 'Resources', icon: <FaBook />, path: '/resource' },
+  { label: 'Gears', icon: <FaCamera />, path: '/gearlist' },
+  { label: 'About', icon: <FaInfoCircle />, path: '/about' },
+  { label: 'Contact', icon: <FaPhone />, path: '/contact' },
+];
 
 const Header = () => {
   const [anchorEl, setAnchorEl] = useState(null);
   const [isOpen, setIsOpen] = useState(false);
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const navigate = useNavigate();
 
   const handleMenuClick = (event) => {
@@ -16,10 +24,15 @@ const Header = () => {
 
   const handleMenuClose = () => {
     setAnchorEl(null);
+    setIsOpen(false);
   };
 
   const toggleMenu = () => {
     setIsOpen(!isOpen);
+  };
+
+  const handleMobileMenuToggle = () => {
+    setIsMobileMenuOpen(!isMobileMenuOpen);
   };
 
   const handleMenuItemClick = (path) => {
@@ -44,7 +57,8 @@ const Header = () => {
         </Link>
         <div className="dropdown">
           <IconButton
-            aria-label="More"
+            aria-label="More options"
+            aria-expanded={Boolean(anchorEl)}
             onClick={handleMenuClick}
             color="primary"
             className="dropdown-toggle"
@@ -74,25 +88,50 @@ const Header = () => {
                 '&:hover': {
                   backgroundColor: 'rgba(255, 255, 255, 0.1)',
                   color: '#F5DEB3',
-                  cursor: 'auto',
                 },
               },
             }}
           >
-            <MenuItem onClick={() => handleMenuItemClick('/resource')}>
-              <FaBook /> Resources
-            </MenuItem>
-            <MenuItem onClick={() => handleMenuItemClick('/gearlist')}>
-              <FaCamera /> Gears
-            </MenuItem>
-            <MenuItem onClick={() => handleMenuItemClick('/about')}>
-              <FaInfoCircle /> About
-            </MenuItem>
-            <MenuItem onClick={() => handleMenuItemClick('/contact')}>
-              <FaPhone /> Contact
-            </MenuItem>
+            {menuItems.map((item) => (
+              <MenuItem
+                key={item.label}
+                onClick={() => handleMenuItemClick(item.path)}
+              >
+                {item.icon} {item.label}
+              </MenuItem>
+            ))}
           </Menu>
         </div>
+      </nav>
+      <IconButton
+        className="hamburger-icon"
+        aria-label="Toggle mobile menu"
+        onClick={handleMobileMenuToggle}
+      >
+        <FaBars />
+      </IconButton>
+      <nav className={`mobile-nav ${isMobileMenuOpen ? 'open' : ''}`}>
+        <Link to="/" onClick={handleMobileMenuToggle} aria-label="Home">
+          <FaHome /> Home
+        </Link>
+        <Link to="/gallery" onClick={handleMobileMenuToggle} aria-label="Gallery">
+          <FaCamera /> Gallery
+        </Link>
+        <Link to="/services" onClick={handleMobileMenuToggle} aria-label="Services">
+          <FaServicestack /> Services
+        </Link>
+        <Link to="/resource" onClick={handleMobileMenuToggle} aria-label="Resources">
+          <FaBook /> Resources
+        </Link>
+        <Link to="/gearlist" onClick={handleMobileMenuToggle} aria-label="Gears">
+          <FaCamera /> Gears
+        </Link>
+        <Link to="/about" onClick={handleMobileMenuToggle} aria-label="About">
+          <FaInfoCircle /> About
+        </Link>
+        <Link to="/contact" onClick={handleMobileMenuToggle} aria-label="Contact">
+          <FaPhone /> Contact
+        </Link>
       </nav>
     </header>
   );
